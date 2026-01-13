@@ -1,0 +1,559 @@
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ff;
+  --neon-green: #00ff9d;
+  --neon-purple: #9d00ff;
+  --dark-bg: #0a0a0f;
+  --dark-card: #13131f;
+  --light-text: #ffffff;
+  --gray-text: #b0b0d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  overflow-x: hidden;
+  perspective: 1000px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+/* 3D Text Effect */
+.text-3d {
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation with 3D Effect */
+.navbar-3d {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  padding-top: 50px;
+  border-bottom: 2px solid var(--neon-blue);
+  transform: translateZ(20px);
+  box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+}
+
+.navbar-brand-3d {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.navbar-brand-3d:hover {
+  transform: rotateY(20deg) translateZ(10px);
+}
+
+.nav-item-3d {
+  margin: 0 15px;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.nav-link-3d {
+  color: var(--light-text) !important;
+  position: relative;
+  padding: 8px 15px !important;
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+
+.nav-link-3d::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--neon-blue);
+  top: 0;
+  left: 0;
+  transform: rotateX(90deg) translateY(-10px);
+  transform-origin: bottom;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+.nav-link-3d:hover::before {
+  transform: rotateX(0deg) translateY(0);
+  opacity: 0.2;
+}
+
+.nav-link-3d:hover {
+  color: var(--neon-blue) !important;
+  transform: translateZ(10px);
+}
+
+/* Hero Section with 3D Parallax */
+.hero-section-3d {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.hero-bg-3d {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--dark-bg) 0%, #1a1a2e 100%);
+  transform: translateZ(-50px) scale(2);
+  z-index: -2;
+}
+
+.floating-cube {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  opacity: 0.1;
+  transform-style: preserve-3d;
+  animation: rotateCube 20s infinite linear;
+  z-index: -1;
+}
+
+.cube-1 {
+  top: 10%;
+  left: 10%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+}
+
+.cube-2 {
+  bottom: 20%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  animation-delay: -5s;
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-green));
+}
+
+.cube-3 {
+  top: 40%;
+  right: 25%;
+  width: 100px;
+  height: 100px;
+  animation-delay: -10s;
+}
+
+@keyframes rotateCube {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) translateZ(0);
+  }
+}
+
+.hero-title-3d {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  transform: translateZ(50px);
+  text-shadow: 0 0 20px var(--neon-blue);
+}
+
+.hero-title-3d span {
+  color: var(--neon-blue);
+  animation: neonGlow 2s infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue),
+      0 0 30px var(--neon-blue);
+  }
+  100% {
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue),
+      0 0 25px var(--neon-blue), 0 0 35px var(--neon-blue);
+  }
+}
+
+.typewriter {
+  font-size: 1.5rem;
+  color: var(--neon-green);
+  margin-bottom: 30px;
+  border-right: 3px solid var(--neon-green);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--neon-green);
+  }
+}
+
+/* 3D Card Effects */
+.card-3d {
+  background: rgba(19, 19, 31, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s, box-shadow 0.5s;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 243, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-3d::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(0, 243, 255, 0.05),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.card-3d:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+  box-shadow: 0 20px 50px rgba(0, 243, 255, 0.2),
+    0 0 0 1px rgba(0, 243, 255, 0.1);
+}
+
+.card-3d:hover::before {
+  transform: translateX(100%);
+}
+
+.card-icon-3d {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--neon-blue);
+  transform-style: preserve-3d;
+  display: inline-block;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0) rotateY(0);
+  }
+  50% {
+    transform: translateY(-10px) rotateY(10deg);
+  }
+}
+
+/* 3D Flip Cards */
+.flip-card-3d {
+  width: 100%;
+  height: 300px;
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flip-card-3d:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.flip-card-front {
+  background: linear-gradient(45deg, var(--dark-card), #1a1a2e);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-back {
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  transform: rotateY(180deg);
+}
+
+/* 3D Rotating Skills */
+.skills-sphere {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateSphere 20s infinite linear;
+}
+
+.skill-point {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 243, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  border: 2px solid var(--neon-blue);
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.skill-point:hover {
+  background: var(--neon-blue);
+  transform: scale(1.2) translateZ(20px);
+  box-shadow: 0 0 20px var(--neon-blue);
+}
+
+@keyframes rotateSphere {
+  0% {
+    transform: rotateY(0) rotateX(0);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+/* 3D Button */
+.btn-3d {
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  border: none;
+  padding: 15px 40px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 243, 255, 0.3);
+}
+
+.btn-3d::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+  top: 0;
+  left: -100%;
+  transition: left 0.5s;
+  z-index: -1;
+}
+
+.btn-3d:hover {
+  transform: translateY(-5px) translateZ(10px);
+  box-shadow: 0 15px 30px rgba(0, 243, 255, 0.5);
+}
+
+.btn-3d:hover::before {
+  left: 0;
+}
+
+/* 3D Section Titles */
+.section-title-3d {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(30px);
+}
+
+.section-title-3d::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(10px);
+  border-radius: 5px;
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* 3D Portfolio Items */
+.portfolio-item-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  margin-bottom: 30px;
+}
+
+.portfolio-item-3d:hover {
+  transform: translateZ(20px) rotateY(10deg);
+}
+
+.portfolio-img-3d {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
+}
+
+.portfolio-item-3d:hover .portfolio-img-3d {
+  box-shadow: 0 25px 50px rgba(0, 243, 255, 0.3);
+}
+
+/* 3D Contact Form */
+.contact-form-3d {
+  transform-style: preserve-3d;
+  transform: translateZ(20px);
+}
+
+.form-control-3d {
+  background: rgba(19, 19, 31, 0.8);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  margin-bottom: 20px;
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+
+.form-control-3d:focus {
+  background: rgba(19, 19, 31, 0.9);
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  transform: translateZ(10px);
+  outline: none;
+}
+
+/* Parallax Scrolling Effect */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.parallax-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 243, 255, 0.05),
+    rgba(157, 0, 255, 0.05)
+  );
+  transform: translateZ(-100px) scale(2);
+  z-index: -1;
+}
+
+/* Footer with 3D Effect */
+.footer-3d {
+  background: rgba(10, 10, 15, 0.95);
+  padding: 60px 0 30px;
+  border-top: 2px solid var(--neon-blue);
+  transform-style: preserve-3d;
+  transform: translateZ(10px);
+}
+
+.social-icon-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 243, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+
+.social-icon-3d:hover {
+  background: var(--neon-blue);
+  transform: translateY(-10px) translateZ(20px);
+  box-shadow: 0 10px 20px rgba(0, 243, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero-title-3d {
+    font-size: 3rem;
+  }
+
+  .section-title-3d {
+    font-size: 2.5rem;
+  }
+
+  .skills-sphere {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title-3d {
+    font-size: 2.5rem;
+  }
+
+  .section-title-3d {
+    font-size: 2rem;
+  }
+
+  .cube-1,
+  .cube-2,
+  .cube-3 {
+    display: none;
+  }
+}

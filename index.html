@@ -1,1032 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Laiba | Frontend Developer & Amazon FBA Specialist</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --neon-blue: #00f3ff;
-            --neon-pink: #ff00ff;
-            --neon-green: #00ff9d;
-            --neon-purple: #9d00ff;
-            --dark-bg: #0a0a0f;
-            --dark-card: #13131f;
-            --light-text: #ffffff;
-            --gray-text: #b0b0d0;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            overflow-x: hidden;
-            perspective: 1000px;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-        
-        /* 3D Text Effect */
-        .text-3d {
-            text-shadow: 
-                0 1px 0 #ccc,
-                0 2px 0 #c9c9c9,
-                0 3px 0 #bbb,
-                0 4px 0 #b9b9b9,
-                0 5px 0 #aaa,
-                0 6px 1px rgba(0,0,0,.1),
-                0 0 5px rgba(0,0,0,.1),
-                0 1px 3px rgba(0,0,0,.3),
-                0 3px 5px rgba(0,0,0,.2),
-                0 5px 10px rgba(0,0,0,.25),
-                0 10px 10px rgba(0,0,0,.2),
-                0 20px 20px rgba(0,0,0,.15);
-        }
-        
-        /* Navigation with 3D Effect */
-        .navbar-3d {
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            padding-top: 50px;
-            border-bottom: 2px solid var(--neon-blue);
-            transform: translateZ(20px);
-            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
-        }
-        
-        .navbar-brand-3d {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-        }
-        
-        .navbar-brand-3d:hover {
-            transform: rotateY(20deg) translateZ(10px);
-        }
-        
-        .nav-item-3d {
-            margin: 0 15px;
-            transform-style: preserve-3d;
-            perspective: 500px;
-        }
-        
-        .nav-link-3d {
-            color: var(--light-text) !important;
-            position: relative;
-            padding: 8px 15px !important;
-            transform-style: preserve-3d;
-            transition: all 0.3s;
-        }
-        
-        .nav-link-3d::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--neon-blue);
-            top: 0;
-            left: 0;
-            transform: rotateX(90deg) translateY(-10px);
-            transform-origin: bottom;
-            opacity: 0;
-            transition: all 0.3s;
-            z-index: -1;
-        }
-        
-        .nav-link-3d:hover::before {
-            transform: rotateX(0deg) translateY(0);
-            opacity: 0.2;
-        }
-        
-        .nav-link-3d:hover {
-            color: var(--neon-blue) !important;
-            transform: translateZ(10px);
-        }
-        
-        /* Hero Section with 3D Parallax */
-        .hero-section-3d {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
-        
-        .hero-bg-3d {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--dark-bg) 0%, #1a1a2e 100%);
-            transform: translateZ(-50px) scale(2);
-            z-index: -2;
-        }
-        
-        .floating-cube {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            opacity: 0.1;
-            transform-style: preserve-3d;
-            animation: rotateCube 20s infinite linear;
-            z-index: -1;
-        }
-        
-        .cube-1 {
-            top: 10%;
-            left: 10%;
-            width: 150px;
-            height: 150px;
-            animation-delay: 0s;
-        }
-        
-        .cube-2 {
-            bottom: 20%;
-            right: 15%;
-            width: 250px;
-            height: 250px;
-            animation-delay: -5s;
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-green));
-        }
-        
-        .cube-3 {
-            top: 40%;
-            right: 25%;
-            width: 100px;
-            height: 100px;
-            animation-delay: -10s;
-        }
-        
-        @keyframes rotateCube {
-            0% {
-                transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0);
-            }
-            100% {
-                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) translateZ(0);
-            }
-        }
-        
-        .hero-title-3d {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            transform: translateZ(50px);
-            text-shadow: 0 0 20px var(--neon-blue);
-        }
-        
-        .hero-title-3d span {
-            color: var(--neon-blue);
-            animation: neonGlow 2s infinite alternate;
-        }
-        
-        @keyframes neonGlow {
-            0% {
-                text-shadow: 0 0 10px var(--neon-blue),
-                             0 0 20px var(--neon-blue),
-                             0 0 30px var(--neon-blue);
-            }
-            100% {
-                text-shadow: 0 0 5px var(--neon-blue),
-                             0 0 15px var(--neon-blue),
-                             0 0 25px var(--neon-blue),
-                             0 0 35px var(--neon-blue);
-            }
-        }
-        
-        .typewriter {
-            font-size: 1.5rem;
-            color: var(--neon-green);
-            margin-bottom: 30px;
-            border-right: 3px solid var(--neon-green);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--neon-green) }
-        }
-        
-        /* 3D Card Effects */
-        .card-3d {
-            background: rgba(19, 19, 31, 0.8);
-            border-radius: 20px;
-            padding: 30px;
-            transform-style: preserve-3d;
-            transition: transform 0.5s, box-shadow 0.5s;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 243, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card-3d::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-        
-        .card-3d:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg) translateZ(20px);
-            box-shadow: 0 20px 50px rgba(0, 243, 255, 0.2),
-                        0 0 0 1px rgba(0, 243, 255, 0.1);
-        }
-        
-        .card-3d:hover::before {
-            transform: translateX(100%);
-        }
-        
-        .card-icon-3d {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--neon-blue);
-            transform-style: preserve-3d;
-            display: inline-block;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-        
-        @keyframes floatIcon {
-            0%, 100% {
-                transform: translateY(0) rotateY(0);
-            }
-            50% {
-                transform: translateY(-10px) rotateY(10deg);
-            }
-        }
-        
-        /* 3D Flip Cards */
-        .flip-card-3d {
-            width: 100%;
-            height: 300px;
-            perspective: 1000px;
-            margin-bottom: 30px;
-        }
-        
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .flip-card-3d:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 30px;
-        }
-        
-        .flip-card-front {
-            background: linear-gradient(45deg, var(--dark-card), #1a1a2e);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .flip-card-back {
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            transform: rotateY(180deg);
-        }
-        
-        /* 3D Rotating Skills */
-        .skills-sphere {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotateSphere 20s infinite linear;
-        }
-        
-        .skill-point {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 243, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            border: 2px solid var(--neon-blue);
-            transform-style: preserve-3d;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .skill-point:hover {
-            background: var(--neon-blue);
-            transform: scale(1.2) translateZ(20px);
-            box-shadow: 0 0 20px var(--neon-blue);
-        }
-        
-        @keyframes rotateSphere {
-            0% {
-                transform: rotateY(0) rotateX(0);
-            }
-            100% {
-                transform: rotateY(360deg) rotateX(360deg);
-            }
-        }
-        
-        /* 3D Button */
-        .btn-3d {
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            border: none;
-            padding: 15px 40px;
-            font-weight: 600;
-            border-radius: 10px;
-            color: white;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: all 0.3s;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.3);
-        }
-        
-        .btn-3d::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
-            top: 0;
-            left: -100%;
-            transition: left 0.5s;
-            z-index: -1;
-        }
-        
-        .btn-3d:hover {
-            transform: translateY(-5px) translateZ(10px);
-            box-shadow: 0 15px 30px rgba(0, 243, 255, 0.5);
-        }
-        
-        .btn-3d:hover::before {
-            left: 0;
-        }
-        
-        /* 3D Section Titles */
-        .section-title-3d {
-            font-size: 3rem;
-            margin-bottom: 60px;
-            text-align: center;
-            position: relative;
-            transform-style: preserve-3d;
-            transform: translateZ(30px);
-        }
-        
-        .section-title-3d::after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%) translateZ(10px);
-            border-radius: 5px;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-        
-        /* 3D Portfolio Items */
-        .portfolio-item-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-            margin-bottom: 30px;
-        }
-        
-        .portfolio-item-3d:hover {
-            transform: translateZ(20px) rotateY(10deg);
-        }
-        
-        .portfolio-img-3d {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            transition: all 0.5s;
-        }
-        
-        .portfolio-item-3d:hover .portfolio-img-3d {
-            box-shadow: 0 25px 50px rgba(0, 243, 255, 0.3);
-        }
-        
-        /* 3D Contact Form */
-        .contact-form-3d {
-            transform-style: preserve-3d;
-            transform: translateZ(20px);
-        }
-        
-        .form-control-3d {
-            background: rgba(19, 19, 31, 0.8);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            border-radius: 10px;
-            padding: 15px;
-            color: white;
-            margin-bottom: 20px;
-            transform-style: preserve-3d;
-            transition: all 0.3s;
-        }
-        
-        .form-control-3d:focus {
-            background: rgba(19, 19, 31, 0.9);
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-            transform: translateZ(10px);
-            outline: none;
-        }
-        
-        /* Parallax Scrolling Effect */
-        .parallax-section {
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
-        
-        .parallax-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(0, 243, 255, 0.05), rgba(157, 0, 255, 0.05));
-            transform: translateZ(-100px) scale(2);
-            z-index: -1;
-        }
-        
-        /* Footer with 3D Effect */
-        .footer-3d {
-            background: rgba(10, 10, 15, 0.95);
-            padding: 60px 0 30px;
-            border-top: 2px solid var(--neon-blue);
-            transform-style: preserve-3d;
-            transform: translateZ(10px);
-        }
-        
-        .social-icon-3d {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 243, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            margin: 0 10px;
-            transform-style: preserve-3d;
-            transition: all 0.3s;
-        }
-        
-        .social-icon-3d:hover {
-            background: var(--neon-blue);
-            transform: translateY(-10px) translateZ(20px);
-            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.3);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-title-3d {
-                font-size: 3rem;
-            }
-            
-            .section-title-3d {
-                font-size: 2.5rem;
-            }
-            
-            .skills-sphere {
-                width: 250px;
-                height: 250px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title-3d {
-                font-size: 2.5rem;
-            }
-            
-            .section-title-3d {
-                font-size: 2rem;
-            }
-            
-            .cube-1, .cube-2, .cube-3 {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom external CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-3d">
-        <div class="container">
-            <a class="navbar-brand navbar-brand-3d" href="#">LAIBA ARIF SHEIKH.</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item nav-item-3d">
-                        <a class="nav-link nav-link-3d" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item nav-item-3d">
-                        <a class="nav-link nav-link-3d" href="#about">About</a>
-                    </li>
-                    <li class="nav-item nav-item-3d">
-                        <a class="nav-link nav-link-3d" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item nav-item-3d">
-                        <a class="nav-link nav-link-3d" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item nav-item-3d">
-                        <a class="nav-link nav-link-3d" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item nav-item-3d">
-                        <a class="nav-link nav-link-3d" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand navbar-brand-3d" href="#">LAIBA ARIF SHEIKH.</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"
+            ><i class="fas fa-bars text-white"></i
+          ></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item nav-item-3d">
+              <a class="nav-link nav-link-3d" href="#home">Home</a>
+            </li>
+            <li class="nav-item nav-item-3d">
+              <a class="nav-link nav-link-3d" href="#about">About</a>
+            </li>
+            <li class="nav-item nav-item-3d">
+              <a class="nav-link nav-link-3d" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item nav-item-3d">
+              <a class="nav-link nav-link-3d" href="#services">Services</a>
+            </li>
+            <li class="nav-item nav-item-3d">
+              <a class="nav-link nav-link-3d" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item nav-item-3d">
+              <a class="nav-link nav-link-3d" href="#contact">Contact</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section-3d">
-        <div class="hero-bg-3d"></div>
-        
-        <!-- 3D Floating Cubes -->
-        <div class="floating-cube cube-1"></div>
-        <div class="floating-cube cube-2"></div>
-        <div class="floating-cube cube-3"></div>
-        
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="hero-title-3d">Hi, I'm <span>Laiba</span></h1>
-                    <div class="typewriter">Frontend Developer & Amazon FBA Specialist</div>
-                    <p class="mb-4">I create immersive digital experiences and optimize Amazon businesses for maximum growth.</p>
-                    <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a href="#portfolio" class="btn btn-3d">View My Work</a>
-                        <a href="#contact" class="btn btn-outline-light" style="border: 2px solid var(--neon-blue); color: var(--neon-blue); padding-top: 13px;">Contact Me</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="text-center">
-                        <div class="skills-sphere mt-5 mt-lg-0">
-                            <!-- 3D Skills Sphere -->
-                            <div class="skill-point" style="transform: rotateY(0deg) translateZ(150px);">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <div class="skill-point" style="transform: rotateY(60deg) translateZ(150px);">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <div class="skill-point" style="transform: rotateY(120deg) translateZ(150px);">
-                                <i class="fab fa-js"></i>
-                            </div>
-                            <div class="skill-point" style="transform: rotateY(180deg) translateZ(150px);">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <div class="skill-point" style="transform: rotateY(240deg) translateZ(150px);">
-                                <i class="fab fa-amazon"></i>
-                            </div>
-                            <div class="skill-point" style="transform: rotateY(300deg) translateZ(150px);">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="hero-bg-3d"></div>
+
+      <!-- 3D Floating Cubes -->
+      <div class="floating-cube cube-1"></div>
+      <div class="floating-cube cube-2"></div>
+      <div class="floating-cube cube-3"></div>
+
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="hero-title-3d">Hi, I'm <span>Laiba</span></h1>
+            <div class="typewriter">
+              Frontend Developer & Amazon FBA Specialist
             </div>
+            <p class="mb-4">
+              I create immersive digital experiences and optimize Amazon
+              businesses for maximum growth.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#portfolio" class="btn btn-3d">View My Work</a>
+              <a
+                href="#contact"
+                class="btn btn-outline-light"
+                style="
+                  border: 2px solid var(--neon-blue);
+                  color: var(--neon-blue);
+                  padding-top: 13px;
+                "
+                >Contact Me</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="text-center">
+              <div class="skills-sphere mt-5 mt-lg-0">
+                <!-- 3D Skills Sphere -->
+                <div
+                  class="skill-point"
+                  style="transform: rotateY(0deg) translateZ(150px)"
+                >
+                  <i class="fab fa-html5"></i>
+                </div>
+                <div
+                  class="skill-point"
+                  style="transform: rotateY(60deg) translateZ(150px)"
+                >
+                  <i class="fab fa-css3-alt"></i>
+                </div>
+                <div
+                  class="skill-point"
+                  style="transform: rotateY(120deg) translateZ(150px)"
+                >
+                  <i class="fab fa-js"></i>
+                </div>
+                <div
+                  class="skill-point"
+                  style="transform: rotateY(180deg) translateZ(150px)"
+                >
+                  <i class="fab fa-react"></i>
+                </div>
+                <div
+                  class="skill-point"
+                  style="transform: rotateY(240deg) translateZ(150px)"
+                >
+                  <i class="fab fa-amazon"></i>
+                </div>
+                <div
+                  class="skill-point"
+                  style="transform: rotateY(300deg) translateZ(150px)"
+                >
+                  <i class="fas fa-chart-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-5 parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container py-5">
-            <h2 class="section-title-3d">About <span>Me</span></h2>
-            <div class="row">
-                <div class="col-lg-6 mb-5">
-                    <div class="card-3d h-100">
-                        <h3 class="mb-4">My Journey</h3>
-                        <p class="mb-3">I started my career as a frontend developer 5 years ago, creating beautiful and functional websites for various clients. My passion for e-commerce led me to explore Amazon FBA, where I discovered the power of data-driven optimization.</p>
-                        <p class="mb-3">Today, I combine both skills to help businesses create stunning online presences while maximizing their Amazon sales potential.</p>
-                        <p>I believe in continuous learning and staying updated with the latest technologies and market trends.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="flip-card-3d">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <div class="card-icon-3d">
-                                            <i class="fas fa-code"></i>
-                                        </div>
-                                        <h4>Web Applications Development</h4>
-                                        <p>Click to flip</p>
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <h4>5+ Years Experience</h4>
-                                        <p>HTML, CSS, JavaScript, React, Bootstrap, Firebase, Supabase, Next.js, PHP, mySQL</p>
-                                        <small>50+ Projects Completed</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="flip-card-3d">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <div class="card-icon-3d">
-                                            <i class="fab fa-amazon"></i>
-                                        </div>
-                                        <h4>Amazon FBA</h4>
-                                        <p>Click to flip</p>
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <h4>3+ Years Experience</h4>
-                                        <p>PPC Management, Listing Optimization</p>
-                                        <small>200% Average Sales Increase</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="parallax-bg"></div>
+      <div class="container py-5">
+        <h2 class="section-title-3d">About <span>Me</span></h2>
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <div class="card-3d h-100">
+              <h3 class="mb-4">My Journey</h3>
+              <p class="mb-3">
+                I started my career as a frontend developer 5 years ago,
+                creating beautiful and functional websites for various clients.
+                My passion for e-commerce led me to explore Amazon FBA, where I
+                discovered the power of data-driven optimization.
+              </p>
+              <p class="mb-3">
+                Today, I combine both skills to help businesses create stunning
+                online presences while maximizing their Amazon sales potential.
+              </p>
+              <p>
+                I believe in continuous learning and staying updated with the
+                latest technologies and market trends.
+              </p>
             </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="flip-card-3d">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="card-icon-3d">
+                        <i class="fas fa-code"></i>
+                      </div>
+                      <h4>Web Applications Development</h4>
+                      <p>Click to flip</p>
+                    </div>
+                    <div class="flip-card-back">
+                      <h4>5+ Years Experience</h4>
+                      <p>
+                        HTML, CSS, JavaScript, React, Bootstrap, Firebase,
+                        Supabase, Next.js, PHP, mySQL
+                      </p>
+                      <small>50+ Projects Completed</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="flip-card-3d">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="card-icon-3d">
+                        <i class="fab fa-amazon"></i>
+                      </div>
+                      <h4>Amazon FBA</h4>
+                      <p>Click to flip</p>
+                    </div>
+                    <div class="flip-card-back">
+                      <h4>3+ Years Experience</h4>
+                      <p>PPC Management, Listing Optimization</p>
+                      <small>200% Average Sales Increase</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="py-5">
-        <div class="container py-5">
-            <h2 class="section-title-3d">My <span>Skills</span></h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h4>Web Applications Development</h4>
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-check text-success me-2"></i> HTML5 / CSS3 / JavaScript / PHP </li>
-                            <li><i class="fas fa-check text-success me-2"></i> React.js / Bootstrap</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Responsive Design</li>
-                            <li><i class="fas fa-check text-success me-2"></i> MySql / Firebase / Supabase</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4>Amazon FBA</h4>
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-check text-success me-2"></i> PPC Campaign Management</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Product Research</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Listing Optimization</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Competitor Analysis</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h4>Tools & Software</h4>
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-check text-success me-2"></i> VS Code / Git</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Helium 10 / Jungle Scout</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Adobe Creative Suite</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Google Analytics</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container py-5">
+        <h2 class="section-title-3d">My <span>Skills</span></h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h4>Web Applications Development</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> HTML5 / CSS3 /
+                  JavaScript / PHP
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> React.js /
+                  Bootstrap
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Responsive
+                  Design
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> MySql /
+                  Firebase / Supabase
+                </li>
+              </ul>
             </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h4>Amazon FBA</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> PPC Campaign
+                  Management
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Product
+                  Research
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Listing
+                  Optimization
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Competitor
+                  Analysis
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h4>Tools & Software</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> VS Code / Git
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Helium 10 /
+                  Jungle Scout
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Adobe Creative
+                  Suite
+                </li>
+                <li>
+                  <i class="fas fa-check text-success me-2"></i> Google
+                  Analytics
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="py-5 parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container py-5">
-            <h2 class="section-title-3d">My <span>Services</span></h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <h4>Website Development</h4>
-                        <p>Custom responsive websites built with modern technologies and best practices.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fab fa-react"></i>
-                        </div>
-                        <h4>React Applications</h4>
-                        <p>Dynamic web applications with React, state management, and API integration.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fab fa-amazon"></i>
-                        </div>
-                        <h4>Amazon FBA VA</h4>
-                        <p>Complete Amazon virtual assistance including product research and listing optimization.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-search-dollar"></i>
-                        </div>
-                        <h4>PPC Management</h4>
-                        <p>Strategic Amazon PPC campaign setup and optimization for maximum ROI.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h4>Product Research</h4>
-                        <p>Data-driven product research to identify profitable Amazon opportunities.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card-3d h-100">
-                        <div class="card-icon-3d">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h4>Graphic Designing</h4>
-<p>Creative visual designs that communicate your brand story and attract customers.</p>                    </div>
-                </div>
+      <div class="parallax-bg"></div>
+      <div class="container py-5">
+        <h2 class="section-title-3d">My <span>Services</span></h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <h4>Website Development</h4>
+              <p>
+                Custom responsive websites built with modern technologies and
+                best practices.
+              </p>
             </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fab fa-react"></i>
+              </div>
+              <h4>React Applications</h4>
+              <p>
+                Dynamic web applications with React, state management, and API
+                integration.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fab fa-amazon"></i>
+              </div>
+              <h4>Amazon FBA VA</h4>
+              <p>
+                Complete Amazon virtual assistance including product research
+                and listing optimization.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-search-dollar"></i>
+              </div>
+              <h4>PPC Management</h4>
+              <p>
+                Strategic Amazon PPC campaign setup and optimization for maximum
+                ROI.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <h4>Product Research</h4>
+              <p>
+                Data-driven product research to identify profitable Amazon
+                opportunities.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card-3d h-100">
+              <div class="card-icon-3d">
+                <i class="fas fa-palette"></i>
+              </div>
+              <h4>Graphic Designing</h4>
+              <p>
+                Creative visual designs that communicate your brand story and
+                attract customers.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-5">
-        <div class="container py-5">
-            <h2 class="section-title-3d">My <span>Portfolio</span></h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="portfolio-item-3d">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Website" class="portfolio-img-3d">
-                        <div class="card-3d mt-3">
-                            <h4>Amazon FBA Private Label</h4>
-                            <p>200% sales increase through optimization</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="portfolio-item-3d">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard" class="portfolio-img-3d">
-                        <div class="card-3d mt-3">
-                            <h4>Web Application Development</h4>
-                            <p>Interactive Web Application with Proper data handling</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="portfolio-item-3d">
-                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Amazon Optimization" class="portfolio-img-3d">
-                        <div class="card-3d mt-3">
-                            <h4>Graphic Designing</h4>
-                            <p>Creative visual designs that communicate your brand story and attract customers.</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container py-5">
+        <h2 class="section-title-3d">My <span>Portfolio</span></h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="portfolio-item-3d">
+              <img
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="E-commerce Website"
+                class="portfolio-img-3d"
+              />
+              <div class="card-3d mt-3">
+                <h4>Amazon FBA Private Label</h4>
+                <p>200% sales increase through optimization</p>
+              </div>
             </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="portfolio-item-3d">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Dashboard"
+                class="portfolio-img-3d"
+              />
+              <div class="card-3d mt-3">
+                <h4>Web Application Development</h4>
+                <p>Interactive Web Application with Proper data handling</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="portfolio-item-3d">
+              <img
+                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Amazon Optimization"
+                class="portfolio-img-3d"
+              />
+              <div class="card-3d mt-3">
+                <h4>Graphic Designing</h4>
+                <p>
+                  Creative visual designs that communicate your brand story and
+                  attract customers.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-5 parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container py-5">
-            <h2 class="section-title-3d">Get In <span>Touch</span></h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="contact-form-3d">
-                        <form id="contactForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control form-control-3d" placeholder="Your Name" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control form-control-3d" placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control form-control-3d" placeholder="Subject" required>
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control form-control-3d" rows="5" placeholder="Your Message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-3d w-100">Send Message</button>
-                        </form>
-                    </div>
+      <div class="parallax-bg"></div>
+      <div class="container py-5">
+        <h2 class="section-title-3d">Get In <span>Touch</span></h2>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="contact-form-3d">
+              <form id="contactForm">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <input
+                      type="text"
+                      class="form-control form-control-3d"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input
+                      type="email"
+                      class="form-control form-control-3d"
+                      placeholder="Your Email"
+                      required
+                    />
+                  </div>
                 </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control form-control-3d"
+                    placeholder="Subject"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <textarea
+                    class="form-control form-control-3d"
+                    rows="5"
+                    placeholder="Your Message"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-3d w-100">
+                  Send Message
+                </button>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer-3d">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <h3 class="mb-3">Laiba Arif Sheikh</h3>
-                    <p>Frontend Developer & Amazon FBA Specialist</p>
-                </div>
-                <div class="col-md-6 mb-4 text-md-end">
-                    <div class="social-links">
-                        <a href="#" class="social-icon-3d">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-icon-3d">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-icon-3d">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon-3d">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <h3 class="mb-3">Laiba Arif Sheikh</h3>
+            <p>Frontend Developer & Amazon FBA Specialist</p>
+          </div>
+          <div class="col-md-6 mb-4 text-md-end">
+            <div class="social-links">
+              <a href="#" class="social-icon-3d">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-icon-3d">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="social-icon-3d">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon-3d">
+                <i class="fab fa-instagram"></i>
+              </a>
             </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p>&copy; 2023 Laiba Arif Sheikh. All Rights Reserved.</p>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <p>&copy; 2023 Laiba Arif Sheikh. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Parallax Scrolling Effect
-        document.addEventListener('DOMContentLoaded', function() {
-            // Parallax effect on scroll
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.parallax-bg');
-                
-                parallaxElements.forEach(function(element) {
-                    const speed = 0.5;
-                    const yPos = -(scrolled * speed);
-                    element.style.transform = `translate3d(0, ${yPos}px, -100px) scale(2)`;
-                });
-            });
-            
-            // Smooth scrolling for navigation
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // 3D Card Hover Effects
-            const cards = document.querySelectorAll('.card-3d');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateY = (x - centerX) / 25;
-                    const rotateX = (centerY - y) / 25;
-                    
-                    this.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0) translateZ(0)';
-                });
-            });
-            
-            // Form Submission
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show success message with 3D effect
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                
-                submitBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i> Message Sent!';
-                submitBtn.style.background = 'linear-gradient(45deg, var(--neon-green), var(--neon-blue))';
-                submitBtn.style.transform = 'translateZ(20px)';
-                
-                // Reset form
-                setTimeout(() => {
-                    contactForm.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = 'linear-gradient(45deg, var(--neon-blue), var(--neon-purple))';
-                    submitBtn.style.transform = 'translateZ(0)';
-                }, 3000);
-            });
-            
-            // Animate elements on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateZ(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all 3D elements
-            document.querySelectorAll('.card-3d, .portfolio-item-3d, .flip-card-3d').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateZ(50px)';
-                el.style.transition = 'opacity 0.8s, transform 0.8s';
-                observer.observe(el);
-            });
-            
-            // Mouse move parallax for hero
-            document.addEventListener('mousemove', function(e) {
-                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-                
-                document.querySelector('.hero-title-3d').style.transform = `translateZ(50px) translateX(${moveX}px) translateY(${moveY}px)`;
-                
-                const cubes = document.querySelectorAll('.floating-cube');
-                cubes.forEach((cube, index) => {
-                    const speed = 0.02 * (index + 1);
-                    cube.style.transform += ` translateX(${moveX * speed * 10}px) translateY(${moveY * speed * 10}px)`;
-                });
-            });
-        });
-    </script>
-</body>
+
+    <script src="index.js"></script>
+  </body>
 </html>
